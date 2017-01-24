@@ -6,6 +6,8 @@
 [![devDependencies Status](https://img.shields.io/david/dev/Selection-Translator/translation.js.svg?style=flat-square)](https://david-dm.org/Selection-Translator/translation.js?type=dev)
 [![NPM Version](https://img.shields.io/npm/v/translation.js.svg?style=flat-square)](https://www.npmjs.com/package/translation.js)
 
+![](https://nodei.co/npm/translation.js.png?downloadRank=true&downloads=true)
+
 收集多种翻译接口并用同一个 API 调用。
 
 ## 特点
