@@ -63,7 +63,7 @@ p.translate = function (queryObj) {
         ie: 'UTF-8',                  // input string encoding
         oe: 'UTF-8',                  // output string encoding
         source: 'icon',               // source
-        q: JSON.stringify(queryObj.text),              // text to be translated
+        q: Array.isArray(queryObj.text) ? queryObj.text.join('%') : queryObj.text,             // text to be translated
         dt: ['t', 'bd']              // a list to add content to return json
         // possible dt values: correspond return json key
         // t: sentences
@@ -130,7 +130,7 @@ p.transform = function (rawRes, queryObj) {
         obj.from = null
       } else {
         obj.from = rawRes.src;
-        obj.result = JSON.parse(sentences[0].trans);
+        obj.result = sentences[0].trans.split('%');
       }
     } catch (e) {}
 
