@@ -51,6 +51,7 @@ p.translate = function (queryObj) {
     : 'en'
   acceptLanguage += ';q=0.8,en;q=0.6'
   return new Promise(function (resolve, reject) {
+    const q =  Array.isArray(queryObj.text) ? queryObj.text.map(c => c.replace(/%/g, '')).join('%') : queryObj.text.replace(/%/g, '');
     request
       .get(that.apiRoot + that.translatePath)
       .set('Accept-Language', acceptLanguage)  // it affects dict language
@@ -63,7 +64,7 @@ p.translate = function (queryObj) {
         ie: 'UTF-8',                  // input string encoding
         oe: 'UTF-8',                  // output string encoding
         source: 'icon',               // source
-        q: Array.isArray(queryObj.text) ? queryObj.text.join('%') : queryObj.text,             // text to be translated
+        q,           // text to be translated
         dt: ['t', 'bd']              // a list to add content to return json
         // possible dt values: correspond return json key
         // t: sentences
